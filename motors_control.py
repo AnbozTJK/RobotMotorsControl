@@ -15,3 +15,19 @@ if __name__ == "__main__":
     set_motor_speed(0, 0)
     smooth_speed_transition(0, 100)
     set_motor_speed(0, 0)
+def manual_control():
+    try:
+        while True:
+            left = int(input("Left speed: "))
+            right = int(input("Right speed: "))
+            set_motor_speed(left, right)
+    except KeyboardInterrupt:
+        print("Manual control stopped.")
+
+# запуск
+if __name__ == "__main__":
+    choice = input("Smooth (s) or Manual (m)? ")
+    if choice.lower() == "s":
+        smooth_speed_transition(0, 100)
+    else:
+        manual_control()
